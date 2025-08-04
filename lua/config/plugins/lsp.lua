@@ -67,9 +67,9 @@ return {
       -- Emmet LSP for HTML/JSX completion
       require("lspconfig").emmet_language_server.setup({
         capabilities = capabilities,
-        filetypes = { 
-          "css", "eruby", "html", "javascript", "javascriptreact", 
-          "less", "sass", "scss", "pug", "typescriptreact" 
+        filetypes = {
+          "css", "eruby", "html", "javascript", "javascriptreact",
+          "less", "sass", "scss", "pug", "typescriptreact"
         },
         init_options = {
           includeLanguages = {},
@@ -104,8 +104,7 @@ return {
         group = vim.api.nvim_create_augroup('my.lsp', {}),
         callback = function(args)
           local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-          if not client:supports_method('textDocument/willSaveWaitUntil')
-              and client:supports_method('textDocument/formatting') then
+          if client:supports_method('textDocument/formatting') or client.name == 'jdtls' then
             vim.api.nvim_create_autocmd('BufWritePre', {
               group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
               buffer = args.buf,
@@ -141,7 +140,7 @@ return {
           '-configuration', vim.fn.expand('~/.config/jdtls-config_linux'),
           '-data', vim.fn.expand('~/.cache/jdtls-workspace/') .. workspace_dir
         },
-        root_dir = vim.fs.root(0, {".git", "mvnw", "gradlew"}),
+        root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
         capabilities = capabilities,
         settings = {
           java = {}
