@@ -137,7 +137,7 @@ return {
           '--add-opens', 'java.base/java.util=ALL-UNNAMED',
           '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
           '-jar', '/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar',
-          '-configuration', vim.fn.expand('~/.config/jdtls-config_linux'),
+          '-configuration', vim.fn.expand('~/.config/jdtls/linux_config'),
           '-data', vim.fn.expand('~/.cache/jdtls-workspace/') .. workspace_dir
         },
         root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
