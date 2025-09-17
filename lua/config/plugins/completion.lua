@@ -1,7 +1,8 @@
 return { {
   'saghen/blink.cmp',
   dependencies = { 'rafamadriz/friendly-snippets',
-    'L3M0N4D3/LuaSnip' },
+    'L3M0N4D3/LuaSnip'
+  },
 
   version = '1.*',
 
